@@ -104,8 +104,6 @@ namespace WindowsFormsApp3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            button1.Location = new Point(button1.Location.X + 100, button1.Location.Y);
-            button1.BackColor = Color.Red;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -165,6 +163,17 @@ namespace WindowsFormsApp3
             id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             numericUpDown1.Value = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value);
+
+           
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            var p = sender as Panel;
+            var g = e.Graphics;
+
+            g.FillRectangle(new SolidBrush(Color.Black), new Rectangle(0, 0, p.Width, p.Height));
+            g.FillRectangle(new SolidBrush(Color.Red), new Rectangle(id, 10, 25, 50));
         }
     }
 }
